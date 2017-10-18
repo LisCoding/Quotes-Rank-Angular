@@ -1,0 +1,17 @@
+<div class="add-quote">
+  <h1>Add a Quote</h1>
+  <form (submit)="onSubmit()">
+    <textarea name="description" rows="8" cols="80" minLength='4'
+    required  [(ngModel)]="quote.description" #description='ngModel'>
+    </textarea>
+    <label id="author">Author</label>
+    <input type="text" name="author" minLength='1' required [(ngModel)]="quote.author" #author='ngModel'>
+
+    <input id="submit" type="submit" name="" value="Add Quote">
+  </form>
+</div>
+<div class="errors">
+  <h5 *ngIf='!author.valid'>Author is required</h5>
+  <h5 *ngIf='!description.valid'>Quote is required</h5>
+</div>
+<app-quote-list [myQuotes]= "quotes"> </app-quote-list>
